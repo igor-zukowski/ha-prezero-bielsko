@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Local captures may contain personal addresses
+*.har
+
+# Local Home Assistant test instance
+.ha-e2e/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+.venv-min/
+.playwright-mcp/

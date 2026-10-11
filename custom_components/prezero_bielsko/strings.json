@@ -1,0 +1,264 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Choose your street",
+        "description": "Select the street of the address whose waste collection schedule you want to track.",
+        "data": {
+          "street": "Street",
+          "language": "Entity language"
+        },
+        "data_description": {
+          "street": "Start typing to search. Streets are listed as published by PreZero Bielsko-Biała.",
+          "language": "Language of entity names, calendar events and attributes. It can be changed later in the options; entity IDs are kept."
+        }
+      },
+      "reconfigure": {
+        "title": "Change address",
+        "description": "Select the new street. Entities, options and history are kept.",
+        "data": {
+          "street": "Street"
+        },
+        "data_description": {
+          "street": "Start typing to search. Streets are listed as published by PreZero Bielsko-Biała."
+        }
+      },
+      "number": {
+        "title": "Choose house number",
+        "description": "Street: **{street}**",
+        "data": {
+          "number": "House number"
+        },
+        "data_description": {
+          "number": "Numbers are listed as published by PreZero Bielsko-Biała."
+        }
+      },
+      "customer": {
+        "title": "Choose schedule",
+        "description": "There are multiple schedules for **{address}**, for example for separate buildings or businesses. Choose the one printed on your schedule or try one and change it later.",
+        "data": {
+          "symbol": "Schedule symbol"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to the PreZero Bielsko-Biała website. Check your internet connection and try again.",
+      "invalid_response": "The PreZero Bielsko-Biała website returned an unexpected response. Try again later.",
+      "invalid_street": "Street not found. Choose a street from the list.",
+      "invalid_number": "House number not found. Choose a number from the list.",
+      "no_numbers": "No house numbers are published for this street.",
+      "no_customer": "No schedule is assigned to this address.",
+      "no_schedule": "There is no schedule for this address in the current year yet."
+    },
+    "abort": {
+      "already_configured": "This address is already configured.",
+      "reconfigure_successful": "The address has been changed."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "PreZero Bielsko-Biała options",
+        "description": "Changing options reloads the integration.",
+        "data": {
+          "language": "Entity language"
+        },
+        "data_description": {
+          "language": "Language of entity names, calendar events and attributes. It can be changed later in the options; entity IDs are kept."
+        },
+        "sections": {
+          "refresh": {
+            "name": "Refreshing",
+            "description": "How often the schedule is downloaded. Days until collection are recalculated every midnight without downloading.",
+            "data": {
+              "refresh_interval": "Download schedule"
+            },
+            "data_description": {
+              "refresh_interval": "Failed downloads are retried after 30 minutes, then less often (up to every 6 hours)."
+            }
+          },
+          "reminders": {
+            "name": "Reminders",
+            "description": "Reminder binary sensors turn on before a collection and can be used as automation triggers. Set 0 days to turn a reminder on at midnight of the collection day.",
+            "data": {
+              "reminder_start": "Reminder starts at",
+              "reminder_end": "Reminder ends at",
+              "days_resztkowe": "Mixed waste: days before",
+              "days_kuchenne": "Bio: days before",
+              "days_mix": "Metals and plastics: days before",
+              "days_makulatura": "Paper: days before",
+              "days_szklo": "Glass: days before",
+              "days_zielone": "Green waste: days before",
+              "days_popiol": "Ash: days before",
+              "days_gabaryty": "Bulky waste: days before"
+            },
+            "data_description": {
+              "reminder_start": "Time of day the reminder turns on, the configured number of days before the collection.",
+              "reminder_end": "Time of day on the collection day the reminder turns off."
+            }
+          },
+          "appearance": {
+            "name": "Appearance",
+            "description": "Colored pictures are shown instead of icons in most dashboard cards. The colors are also available in the `color` attribute.",
+            "data": {
+              "colored_pictures": "Use colored pictures",
+              "color_resztkowe": "Mixed waste: color",
+              "color_kuchenne": "Bio: color",
+              "color_mix": "Metals and plastics: color",
+              "color_makulatura": "Paper: color",
+              "color_szklo": "Glass: color",
+              "color_zielone": "Green waste: color",
+              "color_popiol": "Ash: color",
+              "color_gabaryty": "Bulky waste: color"
+            }
+          }
+        }
+      }
+    }
+  },
+  "selector": {
+    "refresh_interval": {
+      "options": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly"
+      }
+    },
+    "language": {
+      "options": {
+        "pl": "Polski",
+        "en": "English",
+        "auto": "Home Assistant language"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "reminder_resztkowe": {
+        "name": "Reminder mixed waste"
+      },
+      "reminder_kuchenne": {
+        "name": "Reminder bio"
+      },
+      "reminder_mix": {
+        "name": "Reminder metals and plastics"
+      },
+      "reminder_makulatura": {
+        "name": "Reminder paper"
+      },
+      "reminder_szklo": {
+        "name": "Reminder glass"
+      },
+      "reminder_zielone": {
+        "name": "Reminder green waste"
+      },
+      "reminder_popiol": {
+        "name": "Reminder ash"
+      },
+      "reminder_gabaryty": {
+        "name": "Reminder bulky waste"
+      },
+      "reminder_other": {
+        "name": "Reminder {fraction}"
+      },
+      "reminder": {
+        "name": "Collection reminder"
+      },
+      "update_problem": {
+        "name": "Download problem"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Refresh schedule"
+      }
+    },
+    "calendar": {
+      "schedule": {
+        "name": "Collection schedule"
+      }
+    },
+    "sensor": {
+      "resztkowe": {
+        "name": "Mixed waste"
+      },
+      "kuchenne": {
+        "name": "Bio"
+      },
+      "mix": {
+        "name": "Metals and plastics"
+      },
+      "makulatura": {
+        "name": "Paper"
+      },
+      "szklo": {
+        "name": "Glass"
+      },
+      "zielone": {
+        "name": "Green waste"
+      },
+      "popiol": {
+        "name": "Ash"
+      },
+      "gabaryty": {
+        "name": "Bulky waste"
+      },
+      "other": {
+        "name": "{fraction}"
+      },
+      "next_collection": {
+        "name": "Next collection"
+      },
+      "last_update": {
+        "name": "Last successful download"
+      },
+      "published": {
+        "name": "Schedule published"
+      }
+    }
+  },
+  "exceptions": {
+    "update_failed": {
+      "message": "Cannot download the waste collection schedule: {error}"
+    },
+    "refresh_failed": {
+      "message": "Refreshing the schedule failed: {error}"
+    },
+    "entry_not_found": {
+      "message": "The selected config entry was not found."
+    },
+    "entry_not_loaded": {
+      "message": "The selected config entry is not loaded."
+    }
+  },
+  "issues": {
+    "fetch_failed": {
+      "title": "Cannot download the waste collection schedule for {address}",
+      "description": "Downloading the schedule from the PreZero Bielsko-Biała website has been failing for over a day. The last known schedule is still used, so entities keep working, but changes published since then are missing.\n\nLast error: `{error}`\n\nCheck the internet connection of Home Assistant and whether [the schedule website]({url}) works. This issue disappears after the next successful download."
+    },
+    "schedule_missing": {
+      "title": "No waste collection schedule for {address} this year",
+      "description": "PreZero Bielsko-Biała has not published a schedule for {address} for the current year yet. This usually happens at the beginning of a year. The integration keeps checking and this issue disappears when the schedule is published."
+    },
+    "address_not_found": {
+      "title": "Address {address} was not found",
+      "description": "The PreZero Bielsko-Biała website no longer lists a schedule for {address}. The street may have been renamed or the address assigned a different schedule. Reconfigure the integration entry (**Settings > Devices & services > PreZero Bielsko-Biała > ⋮ > Reconfigure**) and select the address again."
+    }
+  },
+  "services": {
+    "get_schedule": {
+      "name": "Get schedule",
+      "description": "Returns upcoming waste collections of a configured address.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Address",
+          "description": "The configured address."
+        },
+        "days": {
+          "name": "Days",
+          "description": "Number of days ahead to return."
+        }
+      }
+    }
+  }
+}

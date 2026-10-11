@@ -1,0 +1,59 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+      - name: Install dependencies
+        run: python -m pip install -r requirements_test.txt
+      - name: Ruff
+        run: |
+          ruff check .
+          ruff format --check .
+      - name: Mypy
+        run: mypy custom_components/prezero_bielsko
+
+  tests:
+    name: Tests (Home Assistant ${{ matrix.name }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: latest
+            python: "3.14"
+            requirements: requirements_test.txt
+          - name: minimum
+            python: "3.13"
+            requirements: requirements_test_min.txt
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Install dependencies
+        run: python -m pip install -r ${{ matrix.requirements }}
+      - name: Test
+        run: pytest --cov --cov-report=term-missing --cov-fail-under=95
+
+  version:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check that the tag matches the manifest version
+        run: |
+          version=$(python -c "import json; print(json.load(open('custom_components/prezero_bielsko/manifest.json'))['version'])")
+          test "v${version}" = "${GITHUB_REF_NAME}" || test "${version}" = "${GITHUB_REF_NAME}"

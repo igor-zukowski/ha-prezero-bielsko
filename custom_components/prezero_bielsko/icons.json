@@ -1,0 +1,125 @@
+{
+  "entity": {
+    "binary_sensor": {
+      "reminder_resztkowe": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_kuchenne": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_mix": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_makulatura": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_szklo": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_zielone": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_popiol": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_gabaryty": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder_other": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "reminder": {
+        "default": "mdi:bell-outline",
+        "state": {
+          "on": "mdi:bell-ring"
+        }
+      },
+      "update_problem": {
+        "default": "mdi:cloud-check-outline",
+        "state": {
+          "on": "mdi:cloud-alert-outline"
+        }
+      }
+    },
+    "button": {
+      "refresh": {
+        "default": "mdi:cloud-download-outline"
+      }
+    },
+    "calendar": {
+      "schedule": {
+        "default": "mdi:delete-clock-outline"
+      }
+    },
+    "sensor": {
+      "resztkowe": {
+        "default": "mdi:trash-can-outline"
+      },
+      "kuchenne": {
+        "default": "mdi:food-apple-outline"
+      },
+      "mix": {
+        "default": "mdi:bottle-soda-classic-outline"
+      },
+      "makulatura": {
+        "default": "mdi:newspaper-variant-outline"
+      },
+      "szklo": {
+        "default": "mdi:bottle-wine-outline"
+      },
+      "zielone": {
+        "default": "mdi:leaf"
+      },
+      "popiol": {
+        "default": "mdi:fireplace"
+      },
+      "gabaryty": {
+        "default": "mdi:sofa-outline"
+      },
+      "other": {
+        "default": "mdi:recycle"
+      },
+      "next_collection": {
+        "default": "mdi:calendar-clock"
+      },
+      "last_update": {
+        "default": "mdi:cloud-check-outline"
+      },
+      "published": {
+        "default": "mdi:calendar-edit"
+      }
+    }
+  },
+  "services": {
+    "get_schedule": {
+      "service": "mdi:calendar-search"
+    }
+  }
+}

@@ -1,0 +1,264 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Wybierz ulicę",
+        "description": "Wybierz ulicę adresu, dla którego chcesz śledzić harmonogram odbioru odpadów.",
+        "data": {
+          "street": "Ulica",
+          "language": "Język encji"
+        },
+        "data_description": {
+          "street": "Zacznij pisać, aby wyszukać. Lista ulic pochodzi z PreZero Bielsko-Biała.",
+          "language": "Język nazw encji, wydarzeń kalendarza i atrybutów. Można go później zmienić w opcjach; identyfikatory encji pozostaną bez zmian."
+        }
+      },
+      "reconfigure": {
+        "title": "Zmień adres",
+        "description": "Wybierz nową ulicę. Encje, opcje i historia zostaną zachowane.",
+        "data": {
+          "street": "Ulica"
+        },
+        "data_description": {
+          "street": "Zacznij pisać, aby wyszukać. Lista ulic pochodzi z PreZero Bielsko-Biała."
+        }
+      },
+      "number": {
+        "title": "Wybierz numer",
+        "description": "Ulica: **{street}**",
+        "data": {
+          "number": "Numer budynku"
+        },
+        "data_description": {
+          "number": "Lista numerów pochodzi z PreZero Bielsko-Biała."
+        }
+      },
+      "customer": {
+        "title": "Wybierz harmonogram",
+        "description": "Dla adresu **{address}** istnieje kilka harmonogramów, np. dla osobnych budynków lub firm. Wybierz symbol z wydrukowanego harmonogramu albo wybierz dowolny i zmień go później.",
+        "data": {
+          "symbol": "Symbol harmonogramu"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można połączyć się ze stroną PreZero Bielsko-Biała. Sprawdź połączenie z internetem i spróbuj ponownie.",
+      "invalid_response": "Strona PreZero Bielsko-Biała zwróciła nieoczekiwaną odpowiedź. Spróbuj ponownie później.",
+      "invalid_street": "Nie znaleziono ulicy. Wybierz ulicę z listy.",
+      "invalid_number": "Nie znaleziono numeru. Wybierz numer z listy.",
+      "no_numbers": "Dla tej ulicy nie opublikowano numerów budynków.",
+      "no_customer": "Do tego adresu nie przypisano harmonogramu.",
+      "no_schedule": "Dla tego adresu nie ma jeszcze harmonogramu na bieżący rok."
+    },
+    "abort": {
+      "already_configured": "Ten adres jest już skonfigurowany.",
+      "reconfigure_successful": "Adres został zmieniony."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje PreZero Bielsko-Biała",
+        "description": "Zmiana opcji przeładowuje integrację.",
+        "data": {
+          "language": "Język encji"
+        },
+        "data_description": {
+          "language": "Język nazw encji, wydarzeń kalendarza i atrybutów. Można go później zmienić w opcjach; identyfikatory encji pozostaną bez zmian."
+        },
+        "sections": {
+          "refresh": {
+            "name": "Odświeżanie",
+            "description": "Jak często pobierać harmonogram. Liczba dni do odbioru jest przeliczana o północy bez pobierania danych.",
+            "data": {
+              "refresh_interval": "Pobieraj harmonogram"
+            },
+            "data_description": {
+              "refresh_interval": "Nieudane pobranie jest ponawiane po 30 minutach, potem coraz rzadziej (maksymalnie co 6 godzin)."
+            }
+          },
+          "reminders": {
+            "name": "Przypomnienia",
+            "description": "Czujniki przypomnień włączają się przed odbiorem i mogą wyzwalać automatyzacje. Ustaw 0 dni, aby przypomnienie włączało się o północy w dniu odbioru.",
+            "data": {
+              "reminder_start": "Początek przypomnienia",
+              "reminder_end": "Koniec przypomnienia",
+              "days_resztkowe": "Zmieszane: dni wcześniej",
+              "days_kuchenne": "Bio: dni wcześniej",
+              "days_mix": "Metale i tworzywa sztuczne: dni wcześniej",
+              "days_makulatura": "Papier: dni wcześniej",
+              "days_szklo": "Szkło: dni wcześniej",
+              "days_zielone": "Zielone: dni wcześniej",
+              "days_popiol": "Popiół: dni wcześniej",
+              "days_gabaryty": "Gabaryty: dni wcześniej"
+            },
+            "data_description": {
+              "reminder_start": "Godzina włączenia przypomnienia, określoną liczbę dni przed odbiorem.",
+              "reminder_end": "Godzina wyłączenia przypomnienia w dniu odbioru."
+            }
+          },
+          "appearance": {
+            "name": "Wygląd",
+            "description": "Kolorowe obrazki są wyświetlane zamiast ikon w większości kart. Kolory są też dostępne w atrybucie `color`.",
+            "data": {
+              "colored_pictures": "Używaj kolorowych obrazków",
+              "color_resztkowe": "Zmieszane: kolor",
+              "color_kuchenne": "Bio: kolor",
+              "color_mix": "Metale i tworzywa sztuczne: kolor",
+              "color_makulatura": "Papier: kolor",
+              "color_szklo": "Szkło: kolor",
+              "color_zielone": "Zielone: kolor",
+              "color_popiol": "Popiół: kolor",
+              "color_gabaryty": "Gabaryty: kolor"
+            }
+          }
+        }
+      }
+    }
+  },
+  "selector": {
+    "refresh_interval": {
+      "options": {
+        "daily": "Codziennie",
+        "weekly": "Co tydzień",
+        "monthly": "Co miesiąc"
+      }
+    },
+    "language": {
+      "options": {
+        "pl": "Polski",
+        "en": "English",
+        "auto": "Język Home Assistant"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "reminder_resztkowe": {
+        "name": "Przypomnienie: zmieszane"
+      },
+      "reminder_kuchenne": {
+        "name": "Przypomnienie: bio"
+      },
+      "reminder_mix": {
+        "name": "Przypomnienie: metale i tworzywa sztuczne"
+      },
+      "reminder_makulatura": {
+        "name": "Przypomnienie: papier"
+      },
+      "reminder_szklo": {
+        "name": "Przypomnienie: szkło"
+      },
+      "reminder_zielone": {
+        "name": "Przypomnienie: zielone"
+      },
+      "reminder_popiol": {
+        "name": "Przypomnienie: popiół"
+      },
+      "reminder_gabaryty": {
+        "name": "Przypomnienie: gabaryty"
+      },
+      "reminder_other": {
+        "name": "Przypomnienie: {fraction}"
+      },
+      "reminder": {
+        "name": "Przypomnienie o odbiorze"
+      },
+      "update_problem": {
+        "name": "Problem z pobieraniem"
+      }
+    },
+    "button": {
+      "refresh": {
+        "name": "Odśwież harmonogram"
+      }
+    },
+    "calendar": {
+      "schedule": {
+        "name": "Harmonogram odbioru"
+      }
+    },
+    "sensor": {
+      "resztkowe": {
+        "name": "Zmieszane"
+      },
+      "kuchenne": {
+        "name": "Bio"
+      },
+      "mix": {
+        "name": "Metale i tworzywa sztuczne"
+      },
+      "makulatura": {
+        "name": "Papier"
+      },
+      "szklo": {
+        "name": "Szkło"
+      },
+      "zielone": {
+        "name": "Zielone"
+      },
+      "popiol": {
+        "name": "Popiół"
+      },
+      "gabaryty": {
+        "name": "Gabaryty"
+      },
+      "other": {
+        "name": "{fraction}"
+      },
+      "next_collection": {
+        "name": "Najbliższy odbiór"
+      },
+      "last_update": {
+        "name": "Ostatnie udane pobranie"
+      },
+      "published": {
+        "name": "Publikacja harmonogramu"
+      }
+    }
+  },
+  "exceptions": {
+    "update_failed": {
+      "message": "Nie można pobrać harmonogramu odbioru odpadów: {error}"
+    },
+    "refresh_failed": {
+      "message": "Odświeżenie harmonogramu nie powiodło się: {error}"
+    },
+    "entry_not_found": {
+      "message": "Nie znaleziono wybranego wpisu konfiguracji."
+    },
+    "entry_not_loaded": {
+      "message": "Wybrany wpis konfiguracji nie jest załadowany."
+    }
+  },
+  "issues": {
+    "fetch_failed": {
+      "title": "Nie można pobrać harmonogramu odbioru odpadów dla {address}",
+      "description": "Pobieranie harmonogramu ze strony PreZero Bielsko-Biała nie udaje się od ponad doby. Używany jest ostatni znany harmonogram, więc encje działają, ale brakuje zmian opublikowanych od tego czasu.\n\nOstatni błąd: `{error}`\n\nSprawdź połączenie Home Assistant z internetem oraz czy [strona harmonogramu]({url}) działa. Zgłoszenie zniknie po następnym udanym pobraniu."
+    },
+    "schedule_missing": {
+      "title": "Brak harmonogramu odbioru odpadów dla {address} w tym roku",
+      "description": "PreZero Bielsko-Biała nie opublikowało jeszcze harmonogramu dla {address} na bieżący rok. Zwykle zdarza się to na początku roku. Integracja sprawdza to dalej, a zgłoszenie zniknie po publikacji harmonogramu."
+    },
+    "address_not_found": {
+      "title": "Nie znaleziono adresu {address}",
+      "description": "Strona PreZero Bielsko-Biała nie zawiera już harmonogramu dla {address}. Ulica mogła zmienić nazwę albo adres otrzymał inny harmonogram. Skonfiguruj wpis ponownie (**Ustawienia > Urządzenia oraz usługi > PreZero Bielsko-Biała > ⋮ > Zmień konfigurację**) i wybierz adres jeszcze raz."
+    }
+  },
+  "services": {
+    "get_schedule": {
+      "name": "Pobierz harmonogram",
+      "description": "Zwraca najbliższe odbiory odpadów dla skonfigurowanego adresu.",
+      "fields": {
+        "config_entry_id": {
+          "name": "Adres",
+          "description": "Skonfigurowany adres."
+        },
+        "days": {
+          "name": "Dni",
+          "description": "Na ile dni do przodu zwrócić odbiory."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Minimum supported Home Assistant (hacs.json): 2025.8.0
+pytest-homeassistant-custom-component==0.13.269
+pycares<5
+pytest-cov

@@ -1,0 +1,16 @@
+get_schedule:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: prezero_bielsko
+    days:
+      required: false
+      default: 30
+      selector:
+        number:
+          min: 1
+          max: 400
+          unit_of_measurement: d
+          mode: box

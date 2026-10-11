@@ -1,0 +1,1 @@
+eval({"dane": [{"typ": "0","symbol": "BBA/10000002"},{"typ": "0","symbol": "BBA/10000003"},{"typ": "0","symbol": "BBA/10000003"},]})

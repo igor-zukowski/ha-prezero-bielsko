@@ -1,0 +1,17 @@
+{
+  "domain": "prezero_bielsko",
+  "name": "PreZero Bielsko-Biała",
+  "codeowners": [
+    "@igor-zukowski"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "http"
+  ],
+  "documentation": "https://github.com/igor-zukowski/ha-prezero-bielsko",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/igor-zukowski/ha-prezero-bielsko/issues",
+  "requirements": [],
+  "version": "1.0.0"
+}
